@@ -933,7 +933,7 @@ class ImapService {
     final results = <ResortResult>[];
     final known = <String>{};
     // Counts every folder of the run, including the ones skipped as already
-    // done, so "N von M" keeps meaning the same thing across a resume.
+    // done, so "N of M" keeps meaning the same thing across a resume.
     var seen = 0;
     try {
       for (final folder in folders) {
@@ -1194,7 +1194,7 @@ class ImapService {
             moved: moved,
             message: '${fixMode ? "Fixing" : "Sorting"} '
                 '$current/$total ($moved moved)'));
-        LongRunGuard.progress('$folder — $current von $total');
+        LongRunGuard.progress('$folder — $current of $total');
       }
       if (batch > 0) {
         try {
@@ -1351,7 +1351,7 @@ class ImapService {
           await _storage.saveProgress(sk, doneUids);
           batch = 0;
         }
-        LongRunGuard.progress('$current von $total Mails, $moved moved');
+        LongRunGuard.progress('$current of $total mails, $moved moved');
         onProgress?.call(OpProgress(
             status: 'running',
             current: current,
@@ -1451,7 +1451,7 @@ class ImapService {
               status: 'running',
               current: current,
               total: totalMails,
-              message: 'Scanning $folder... ($current Mails)'));
+              message: 'Scanning $folder... ($current mails)'));
         }
       }
 

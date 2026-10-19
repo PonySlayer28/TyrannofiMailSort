@@ -120,7 +120,7 @@ void main() {
     });
 
     test('still catches them after the tree was pushed aside', () {
-      // "Alle Ordner beiseiteschieben" turns Entwürfe into Alt/Entwürfe.
+      // "Push all folders aside" turns Entwürfe into Alt/Entwürfe.
       expect(isReservedMailboxName('Alt/Entwürfe'), isTrue);
       expect(isReservedMailboxName('Alt/Gesendet'), isTrue);
     });
@@ -134,15 +134,15 @@ void main() {
 
   group('isProtectedMailboxPath', () {
     test('keeps the reset out of the boxes that would ruin it', () {
-      // Diese Liste ist die Sicherheitszusage von "Alles zurück in den
-      // Posteingang". Jeder Eintrag hier steht für einen anderen Weg, ein
-      // Postfach zu zerstören.
+      // This list is the safety guarantee of "Move everything back to
+      // inbox". Each entry here stands for a different way to destroy a
+      // mailbox.
       for (final p in [
-        'INBOX', 'inbox', // Verschieben in sich selbst = Kopie + Löschen
-        '[Gmail]/Alle Nachrichten', // Verschieben heraus = Papierkorb
+        'INBOX', 'inbox', // moving into itself = copy + delete
+        '[Gmail]/Alle Nachrichten', // moving out of it = trash
         '[Google Mail]/Alle Nachrichten',
         '[Imap]/Gesendet',
-        'Entwürfe', 'Gesendet', 'Papierkorb', 'Spam', // eigener Mailfluss
+        'Entwürfe', 'Gesendet', 'Papierkorb', 'Spam', // own mail flow
       ]) {
         expect(isProtectedMailboxPath(p), isTrue, reason: p);
       }

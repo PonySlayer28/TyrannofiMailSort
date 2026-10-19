@@ -2,29 +2,29 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:tyrannofi_app/models/mail_server.dart';
 
 void main() {
-  group('welchen Anbieter die App nach einem Neustart wieder aufschlägt', () {
-    test('ein gemerkter Anbieter wird genommen', () {
+  group('which provider the app opens after a restart', () {
+    test('a remembered provider is used', () {
       expect(validServerKey('yahoo'), 'yahoo');
     });
 
-    test('jeder der acht Anbieter kommt unverändert zurück', () {
+    test('each of the eight providers comes back unchanged', () {
       for (final key in kServers.keys) {
         expect(validServerKey(key), key);
       }
     });
 
-    test('ohne gemerkten Anbieter beginnt es bei Gmail', () {
+    test('without a remembered provider it starts at Gmail', () {
       expect(validServerKey(null), 'gmail');
     });
 
-    // Ein Schlüssel aus einer älteren Fassung darf die Auswahlliste nicht
-    // erreichen: der Dropdown bricht ab, wenn sein Wert dort fehlt, und dann
-    // wäre der Anbieterwechsel als Ganzes hin.
-    test('ein Anbieter, den es nicht mehr gibt, fällt auf Gmail zurück', () {
+    // A key from an older version must not reach the selection list: the
+    // dropdown crashes when its value is missing there, and the provider
+    // switch as a whole would be broken.
+    test('a provider that no longer exists falls back to Gmail', () {
       expect(validServerKey('altavista'), 'gmail');
     });
 
-    test('auch die leere Zeichenkette ist kein Anbieter', () {
+    test('the empty string is not a provider either', () {
       expect(validServerKey(''), 'gmail');
     });
   });

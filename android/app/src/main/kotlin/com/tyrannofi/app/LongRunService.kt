@@ -100,10 +100,10 @@ class LongRunService : Service() {
         if (mgr.getNotificationChannel(CHANNEL_ID) != null) return
         val ch = NotificationChannel(
             CHANNEL_ID,
-            "Laufende Postfach-Arbeit",
+            "Running mailbox work",
             NotificationManager.IMPORTANCE_LOW
         )
-        ch.description = "Zeigt an, dass ein Sortier- oder Scanlauf noch arbeitet."
+        ch.description = "Shows that a sort or scan run is still working."
         ch.setShowBadge(false)
         mgr.createNotificationChannel(ch)
     }

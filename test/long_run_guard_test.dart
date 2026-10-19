@@ -37,8 +37,8 @@ void main() {
       async.elapse(const Duration(minutes: 1));
     });
     expect(calls, isEmpty,
-        reason: 'Eine Sekundenaktion darf keine Benachrichtigung aufblitzen '
-            'lassen — sonst wird sie stummgeschaltet.');
+        reason: 'A seconds-long action must not flash a notification — '
+            'otherwise users mute it.');
   });
 
   test('work outliving the threshold is protected', () {
@@ -56,19 +56,19 @@ void main() {
 
   test('nested operations do not end the service early', () {
     fakeAsync((async) {
-      LongRunGuard.begin(); // äußerer Stapellauf
+      LongRunGuard.begin(); // outer batch run
       async.elapse(LongRunGuard.threshold + const Duration(seconds: 1));
       expect(calls, contains('start'));
 
-      LongRunGuard.begin(); // innerer Einzelschritt
-      LongRunGuard.end(); // dessen Ende darf den Dienst nicht mitnehmen
+      LongRunGuard.begin(); // inner single step
+      LongRunGuard.end(); // its end must not take the service down
       async.elapse(const Duration(seconds: 1));
       expect(LongRunGuard.isActive, isTrue,
-          reason: 'Der innere Aufruf hat den Dienst nicht gestartet und darf '
-              'ihn dem äußeren nicht wegziehen.');
+          reason: 'The inner call did not start the service and must not '
+              'pull it out from under the outer one.');
       expect(calls.where((c) => c == 'stop'), isEmpty);
 
-      LongRunGuard.end(); // erst jetzt
+      LongRunGuard.end(); // only now
       async.elapse(const Duration(seconds: 1));
     });
     expect(LongRunGuard.isActive, isFalse);
@@ -77,12 +77,12 @@ void main() {
 
   test('a thrown operation still releases the service', () async {
     await expectLater(
-      LongRunGuard.run('Test', () async => throw StateError('kaputt')),
+      LongRunGuard.run('Test', () async => throw StateError('broken')),
       throwsA(isA<StateError>()),
     );
     expect(LongRunGuard.depth, 0,
-        reason: 'Ein abgestürzter Lauf darf keine Meldung hinterlassen, die '
-            'behauptet, es werde noch gearbeitet.');
+        reason: 'A crashed run must not leave a notification claiming '
+            'work is still going on.');
     expect(LongRunGuard.isActive, isFalse);
   });
 
@@ -92,24 +92,24 @@ void main() {
     expect(LongRunGuard.depth, 0);
     LongRunGuard.begin();
     expect(LongRunGuard.depth, 1,
-        reason: 'Sonst käme der nächste echte Lauf nie über null hinaus und '
-            'bliebe ungeschützt.');
+        reason: 'Otherwise the next real run would never get above zero '
+            'and would stay unprotected.');
   });
 
   test('progress is only sent while the service runs, and not repeated', () {
     fakeAsync((async) {
       LongRunGuard.begin();
-      LongRunGuard.progress('1 von 10'); // noch kein Dienst
+      LongRunGuard.progress('1 of 10'); // no service yet
       expect(calls, isEmpty);
 
       async.elapse(LongRunGuard.threshold + const Duration(seconds: 1));
       calls.clear();
 
-      LongRunGuard.progress('2 von 10');
-      LongRunGuard.progress('2 von 10'); // unverändert
+      LongRunGuard.progress('2 of 10');
+      LongRunGuard.progress('2 of 10'); // unchanged
       expect(calls.where((c) => c == 'update').length, 1,
-          reason: 'Der Fortschritt feuert pro Mail-Block; unveränderten Text '
-              'erneut zu senden wären tausende Kanalaufrufe.');
+          reason: 'Progress fires per mail batch; resending unchanged text '
+              'would mean thousands of channel calls.');
       LongRunGuard.end();
       async.elapse(const Duration(seconds: 1));
     });

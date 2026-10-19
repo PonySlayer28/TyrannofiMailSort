@@ -37,7 +37,7 @@ paths.** Almost everything below follows from that.
 
 On the mailbox: 663 folders yielded only 501 rules.
 
-**Status:** fixed in `4aba2ee`. `patternMatchesDomain` in `domain_utils.dart`
+**Status:** fixed. `patternMatchesDomain` in `domain_utils.dart`
 compares whole dot- and hyphen-separated parts instead of substrings;
 `patternMatchesSender` checks only the sender domain, not the full address.
 Covered by tests. How many rules the 663 folders now produce will show on the
@@ -50,7 +50,7 @@ next import (see "Next Steps").
 `[Imap]/Papierkorb`, `[Imap]/Entwürfe`, `[Imap]/Gesendet` pass as ordinary
 folders and become rule sources.
 
-**Status:** fixed in `4aba2ee`. `_isProviderNamespace` now matches on any
+**Status:** fixed. `_isProviderNamespace` now matches on any
 bracket-enclosed root segment rather than a list of known names, at all five
 sites that filter folders.
 
@@ -72,7 +72,7 @@ What remains duplicated is only invisible to the app — see issue 5.
 (`absinth-oase.de` → `Absinth-oase`) and creates it alongside the manually
 maintained category. This is the source of the 110 duplicate pairs.
 
-**Status:** fixed in `4aba2ee`. `autoAssign` now receives the existing folders
+**Status:** fixed. `autoAssign` now receives the existing folders
 and prefers them as targets; categorized folders claim their name before flat
 ones. New duplications no longer arise — existing ones remain until merged.
 
@@ -111,14 +111,14 @@ own.
 Anyone changing the sample size must also change the threshold — nothing in the
 code enforces this.
 
-**Status:** fixed in `4aba2ee`. `importRulesFromFolders` now derives the
+**Status:** fixed. `importRulesFromFolders` now derives the
 threshold from `sampleSize` instead of accepting it separately.
 
 ## 7. No batch run for merges
 
 Tapping through 101 pairs one by one is impractical; a batch run was missing.
 
-**Status:** fixed in `c04de9e`. `mergeFolders` processes the list over a single
+**Status:** fixed. `mergeFolders` processes the list over a single
 connection and checks for cancellation between folders, never within one. Run on
 the mailbox: ten pairs, cleanly stopped.
 

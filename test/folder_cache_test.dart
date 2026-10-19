@@ -19,7 +19,7 @@ void main() {
     });
 
     test('an invalidated entry is never believed, whatever the clock says', () {
-      // The promise Fehler 11 rests on. An invalidated entry carries ts 0, and
+      // The promise issue 11 rests on. An invalidated entry carries ts 0, and
       // seeding `known` or `created` from folders a merge deleted would skip
       // the CREATE and strand every mail heading there — silently.
       for (final clock in [now, 0 + ttl.inMilliseconds, 1 << 40]) {
