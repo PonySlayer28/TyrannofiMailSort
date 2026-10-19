@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tyrannofi.app">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <!-- A sort run over a mature mailbox takes hours. Without a foreground
+         service the app is an ordinary background app and gets killed as soon
+         as Android needs memory. dataSync is the service type for network sync;
+         from Android 14 it must be declared or the system refuses to start. -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_DATA_SYNC" />
+    <!-- Only for the visible progress notification. If denied, the service
+         still runs. -->
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <application
+        android:label="TyrannoFi"
+        android:icon="@mipmap/ic_launcher">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:theme="@style/LaunchTheme"
+            android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
+            android:hardwareAccelerated="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <service
+            android:name=".LongRunService"
+            android:exported="false"
+            android:foregroundServiceType="dataSync" />
+        <meta-data
+            android:name="flutterEmbedding"
+            android:value="2" />
+    </application>
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="https" />
+        </intent>
+    </queries>
+</manifest>
