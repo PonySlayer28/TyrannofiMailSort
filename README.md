@@ -47,6 +47,8 @@ For a signed release build, see [BUILD.md](BUILD.md).
 
 ## Documentation
 
+- **[HOWTO.md](HOWTO.md)** — step-by-step user guide: install, connect your
+  account, sort, clean up, spam scanner, backups and emergency tools.
 - **[KNOWN_ISSUES.md](KNOWN_ISSUES.md)** — every bug found during real-world
   usage, with root cause, impact and status. Most come from running the app on
   a mature mailbox and affect any user with a grown folder structure.
