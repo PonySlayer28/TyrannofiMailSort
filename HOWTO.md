@@ -1,4 +1,4 @@
-# TyrannoFi — How-To Guide
+# 🦖 TyrannoFi — How-To Guide
 
 A step-by-step guide to installing TyrannoFi, connecting your mailbox and
 sorting it by sender without losing mail.
@@ -28,8 +28,22 @@ sorting it by sender without losing mail.
 
 ## 1. Install the app
 
-TyrannoFi is an Android app. There is no prebuilt APK, so you build it
-yourself.
+TyrannoFi is an Android app (Android 7.0 or newer).
+
+### Option A: download the APK (recommended)
+
+1. On your phone, open the
+   [latest release](https://github.com/PonySlayer28/TyrannofiMailSort/releases/latest)
+   and download `TyrannoFi-<version>.apk`.
+2. Open the downloaded file. Android asks you to allow "Install unknown apps"
+   for your browser or file manager. Allow it, then tap **Install**.
+3. Optional: compare the file's SHA-256 checksum with the one in the release
+   notes.
+
+Google Play Protect may warn that the app is from an unknown developer. That
+is because it is not distributed through the Play Store.
+
+### Option B: build it yourself
 
 **You need:** Flutter SDK 3.x, Java 11+, and the Android SDK (downloads
 automatically on the first build).

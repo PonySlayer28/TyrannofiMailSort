@@ -1,11 +1,27 @@
-# TyrannoFi
+<p align="center">
+  <img src="docs/banner.svg" alt="A crowned Tyrannosaurus guarding a hoard of sorted mail" width="100%">
+</p>
+
+# 🦖 TyrannoFi
+
+> Your inbox has a new owner. It has tiny arms, a big crown, and strong
+> opinions about which folder every mail belongs in.
 
 A Flutter/Android app that organizes your IMAP mailbox by sender domain:
 one folder per domain, no categories. `service@mail.amazon.de` →
 `Amazon`, and `info@finanzguru.de` plus `customer@finanzguru.de` both land
 in the same folder.
 
-## Features
+## 📥 Download
+
+**[Download the latest APK](https://github.com/PonySlayer28/TyrannofiMailSort/releases/latest)**
+(Android 7.0+). Open the file on your phone and allow "Install unknown apps"
+when Android asks.
+
+New here? The **[How-To Guide](HOWTO.md)** walks you through setup and your
+first sort.
+
+## 🦕 Features
 
 - **Sort by sender** — inbox or entire folder tree.
 - **Merge duplicate folders** (`Amazon` and `Shopping/Amazon`).
@@ -15,7 +31,7 @@ in the same folder.
 - **Emergency tools**: move everything back to inbox (reversible), push the
   tree aside, delete all folders.
 
-## Design Principles
+## 🥚 Design Principles
 
 This tool operates on a live mailbox, and that shapes the entire design:
 
@@ -35,7 +51,7 @@ Cancellation always happens at folder boundaries, never mid-folder. Long-running
 operations register as a foreground service so Android does not kill them, and
 they are resumable.
 
-## Build
+## 🦴 Build
 
 ```sh
 flutter pub get
@@ -45,7 +61,7 @@ flutter build apk --debug
 
 For a signed release build, see [BUILD.md](BUILD.md).
 
-## Documentation
+## 📜 Documentation
 
 - **[HOWTO.md](HOWTO.md)** — step-by-step user guide: install, connect your
   account, sort, clean up, spam scanner, backups and emergency tools.
@@ -58,6 +74,6 @@ Particularly worth reading if you are building something similar: issue 10
 (`amazon.co.uk` → folder `Co`), and issue 17 (IMAP requires folder names in
 modified UTF-7).
 
-## License
+## ⚖️ License
 
 MIT — see [LICENSE](LICENSE).

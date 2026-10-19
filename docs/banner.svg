@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" font-family="Georgia, 'Times New Roman', serif">
+  <title>TyrannoFi — a crowned Tyrannosaurus guarding its hoard of sorted mail</title>
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#241A0E"/>
+      <stop offset="1" stop-color="#1A1008"/>
+    </linearGradient>
+    <g id="env">
+      <rect x="-22" y="-14" width="44" height="28" rx="2" fill="#E8D5BC" stroke="#8B5E3C" stroke-width="1.5"/>
+      <path d="M-22 -14 L0 3 L22 -14" fill="none" stroke="#8B5E3C" stroke-width="1.5"/>
+    </g>
+  </defs>
+
+  <rect width="1200" height="400" fill="url(#sky)"/>
+  <!-- moon -->
+  <circle cx="1110" cy="70" r="34" fill="#3A2A18"/>
+  <circle cx="1098" cy="62" r="34" fill="#241A0E"/>
+  <!-- distant volcanoes -->
+  <path d="M440 360 L540 250 L560 262 L580 250 L690 360 Z" fill="#2E2115"/>
+  <path d="M1000 360 L1080 280 L1100 290 L1180 360 Z" fill="#2E2115"/>
+  <path d="M556 252 q6 -30 -4 -50 M566 250 q10 -26 4 -46" stroke="#3A2A18" stroke-width="5" fill="none" stroke-linecap="round"/>
+
+  <!-- a distant sauropod, also carrying mail -->
+  <g fill="#5A4128">
+    <path d="M996 338 Q1036 320 1058 304 Q1090 286 1122 300 Q1140 250 1150 214 Q1156 200 1168 204 Q1176 210 1166 218 Q1158 252 1152 310 Q1154 328 1148 334 L1148 352 L1136 352 L1134 336 L1082 336 L1080 352 L1068 352 L1066 334 Q1040 336 996 338 Z"/>
+    <rect x="1074" y="278" width="26" height="16" rx="2" fill="#E8D5BC" opacity="0.8"/>
+  </g>
+
+  <!-- ground -->
+  <rect x="0" y="356" width="1200" height="44" fill="#120B05"/>
+  <line x1="0" y1="356" x2="1200" y2="356" stroke="#3A2A18" stroke-width="2"/>
+
+  <!-- hoard of envelopes -->
+  <g>
+    <use href="#env" transform="translate(600 340) rotate(-8)"/>
+    <use href="#env" transform="translate(645 342) rotate(6)"/>
+    <use href="#env" transform="translate(690 340) rotate(-4)"/>
+    <use href="#env" transform="translate(622 316) rotate(10)"/>
+    <use href="#env" transform="translate(668 318) rotate(-12)"/>
+    <use href="#env" transform="translate(646 294) rotate(3)"/>
+    <use href="#env" transform="translate(905 343) rotate(9)"/>
+    <use href="#env" transform="translate(950 341) rotate(-6)"/>
+    <use href="#env" transform="translate(928 318) rotate(-2)"/>
+  </g>
+
+  <!-- Tyrannosaurus -->
+  <g fill="#C4956A" stroke="#1A1008" stroke-width="3" stroke-linejoin="round">
+    <!-- far leg -->
+    <path d="M745 262 Q760 300 742 330 L748 352 L705 354 L716 342 L712 318 Q700 290 712 262 Z" fill="#8B5E3C"/>
+    <!-- body, tail, neck, head -->
+    <path d="M556 250
+             Q600 236 660 214
+             Q720 168 800 160
+             Q858 156 880 126
+             Q896 92 948 88
+             L1012 94
+             Q1034 98 1036 116
+             L1036 128
+             L972 134
+             L1026 142
+             Q1026 160 1002 162
+             L946 162
+             Q912 168 904 192
+             Q900 226 876 250
+             Q850 274 816 280
+             Q760 286 720 270
+             Q660 264 556 250 Z"/>
+    <!-- near leg -->
+    <path d="M770 228 Q842 226 846 282 L836 328 L874 346 L872 356 L800 356 L806 330 Q770 300 770 228 Z"/>
+    <!-- tiny arm holding an envelope -->
+    <path d="M896 208 Q918 212 930 226 L936 234 M930 226 L940 226" fill="none" stroke="#1A1008" stroke-width="9" stroke-linecap="round"/>
+    <path d="M896 208 Q918 212 930 226 L936 234 M930 226 L940 226" fill="none" stroke="#C4956A" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <use href="#env" transform="translate(950 230) rotate(-14) scale(0.7)"/>
+  <!-- back ridges -->
+  <path d="M690 196 l10 -14 l6 12 M730 176 l10 -14 l6 12 M770 164 l10 -14 l6 12 M812 160 l10 -14 l6 12 M852 148 l10 -14 l6 12" fill="none" stroke="#8B5E3C" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- teeth -->
+  <path d="M984 133 l4 8 l4 -8 M998 132 l4 8 l4 -8 M1012 131 l4 8 l4 -8 M1024 130 l4 7 l3 -7" fill="#F0E4D4" stroke="none"/>
+  <!-- eye + brow -->
+  <circle cx="972" cy="110" r="6" fill="#1A1008"/>
+  <circle cx="974" cy="108" r="2" fill="#F0E4D4"/>
+  <path d="M958 98 L986 102" stroke="#1A1008" stroke-width="4" stroke-linecap="round"/>
+  <!-- nostril -->
+  <circle cx="1024" cy="104" r="2.5" fill="#1A1008"/>
+  <!-- crown: it owns the account -->
+  <path d="M918 92 L914 56 L930 72 L942 48 L954 70 L970 54 L968 90 Z" fill="#E8B04A" stroke="#1A1008" stroke-width="3" stroke-linejoin="round"/>
+  <circle cx="942" cy="78" r="4" fill="#CF6679"/>
+
+  <!-- wordmark -->
+  <text x="60" y="150" font-size="76" font-weight="bold" fill="#F0E4D4" letter-spacing="6">TYRANNOFI</text>
+  <text x="64" y="196" font-size="26" fill="#C4956A" font-style="italic">Your inbox has a new owner.</text>
+  <text x="64" y="250" font-size="18" fill="#8B5E3C" font-family="Helvetica, Arial, sans-serif" letter-spacing="2">ONE FOLDER PER SENDER · NO MAIL LOST</text>
+  <text x="64" y="280" font-size="18" fill="#8B5E3C" font-family="Helvetica, Arial, sans-serif" letter-spacing="2">IMAP MAIL ORGANIZER FOR ANDROID</text>
+</svg>
